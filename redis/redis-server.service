@@ -1,5 +1,5 @@
 [Unit]
-Description=Advanced key-value store
+Description=[LEO] Advanced key-value store
 After=network.target
 Documentation=http://redis.io/documentation, man:redis-server(1)
 
@@ -7,7 +7,7 @@ Documentation=http://redis.io/documentation, man:redis-server(1)
 Type=notify
 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf
 ExecStop=/bin/kill -s TERM $MAINPID
-PIDFile=/run/redis/redis-server.pid
+PIDFile=/data/redis/redis_6379.pid
 TimeoutStopSec=0
 Restart=always
 User=redis
@@ -21,9 +21,7 @@ LimitNOFILE=65535
 PrivateDevices=yes
 ProtectHome=yes
 ReadOnlyDirectories=/
-ReadWriteDirectories=-/var/lib/redis
-ReadWriteDirectories=-/var/log/redis
-ReadWriteDirectories=-/run/redis
+ReadWriteDirectories=-/data/redis
 
 NoNewPrivileges=true
 CapabilityBoundingSet=CAP_SETGID CAP_SETUID CAP_SYS_RESOURCE
@@ -43,4 +41,3 @@ ReadWriteDirectories=-/etc/redis
 
 [Install]
 WantedBy=multi-user.target
-Alias=redis.service
