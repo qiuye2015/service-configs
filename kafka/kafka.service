@@ -1,0 +1,25 @@
+[Unit]
+Description=[LEO] Apache Kafka Server
+Documentation=http://kafka.apache.org/documentation.html
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+Environment="JAVA_HOME=/home/leo/work/software/jdk"
+Environment="KAFKA_HEAP_OPTS=-Xmx256m -Xms256m"
+Environment="KAFKA_LOG4J_OPTS=-Dlog4j.configuration=file:/home/leo/work/software/kafka_2.13-3.9.0/config/log4j.properties"
+Environment="KAFKA_JVM_PERFORMANCE_OPTS=-server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -Djava.awt.headless=true"
+Environment="KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+Environment="KAFKA_OPTS="
+
+User=leo
+Group=leo
+ExecStart=/home/leo/work/software/kafka_2.13-3.9.0/bin/kafka-server-start.sh /home/leo/work/software/kafka_2.13-3.9.0/config/kraft/server.properties
+ExecStop=/home/leo/work/software/kafka_2.13-3.9.0/bin/kafka-server-stop.sh
+Restart=on-failure
+RestartSec=10
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
