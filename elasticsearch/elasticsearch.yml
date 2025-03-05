@@ -1,0 +1,26 @@
+# 集群名称
+cluster.name: es-cluster
+
+# 节点名称
+node.name: node-1
+
+# 数据和日志路径
+path.data: /data/elasticsearch/data
+path.logs: /data/elasticsearch/logs
+
+# 网络设置
+network.host: 0.0.0.0
+http.port: 9200
+
+# 发现设置
+discovery.type: single-node
+
+# 安全设置
+xpack.security.enabled: false
+
+# 内存锁定设置
+bootstrap.memory_lock: false
+
+# 跨域设置
+http.cors.enabled: true
+http.cors.allow-origin: "*"
