@@ -1,0 +1,15 @@
+[Unit]
+Description=[LEO] Kibana
+After=elasticsearch.service
+
+[Service]
+Type=simple
+User=leo
+Group=leo
+ExecStart=/home/leo/work/software/kibana-7.17.10-linux-x86_64/bin/kibana
+ExecStop=pkill -F /data/kibana/kibana.pid
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

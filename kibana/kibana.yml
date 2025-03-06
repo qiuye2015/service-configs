@@ -1,0 +1,19 @@
+# Kibana 服务器配置
+server.port: 15601
+server.host: "0.0.0.0"
+
+# Elasticsearch 连接配置
+elasticsearch.hosts: ["http://localhost:9200"]
+elasticsearch.requestTimeout: 30000
+# elasticsearch.username: kibana
+# elasticsearch.password: <kibana password>
+
+# 日志配置
+logging.dest: /data/kibana/logs/kibana.log
+pid.file: /data/kibana/kibana.pid
+
+# 数据目录
+path.data: /data/kibana/data
+
+# 界面配置
+i18n.locale: "zh-CN"
