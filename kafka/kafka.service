@@ -21,5 +21,8 @@ Restart=on-failure
 RestartSec=10
 SuccessExitStatus=143
 
+StandardOutput=append:/data/kafka/logs/leo_kafka.log
+StandardError=append:/data/kafka/logs/leo_kafka.err
+
 [Install]
 WantedBy=multi-user.target
